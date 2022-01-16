@@ -1,0 +1,225 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      :root {
+  --main-color: #1e202b;
+  --secondary-color: #262936;
+  --table-header: #2d303d;
+  --table-body: #323544;
+  --primary-color: #009ad8;
+  --text-white: #ffffff;
+  --text-dark: #bfc1c8;
+  --border-radius: 30px;
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Roboto", sans-serif;
+}
+p {
+  margin: 0;
+  padding: 0;
+}
+.hero {
+  background-image: url("/Images/compressed-hero-5.webp");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  min-height: auto;
+}
+.hero__container {
+  padding-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.search_location {
+  position: relative;
+  width: 60%;
+}
+.search__input {
+  position: relative;
+  width: 100%;
+  padding: 1.4rem;
+  padding-top: 1.1rem;
+  padding-right: 9rem;
+  background: transparent;
+  border: 2px solid var(--primary-color);
+  border-radius: var(--border-radius);
+  color: black;
+  font-size: 1.2rem;
+}
+.search__input::placeholder {
+  color: black;
+}
+.search__button {
+  border: 0;
+  background: var(--primary-color);
+  color: var(--text-white);
+  padding: 1rem 2.7rem;
+  position: absolute;
+  border-radius: 25px;
+  right: 0;
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
+  cursor: pointer;
+}
+.weather_widget {
+  display: none;
+  transform: scale(0);
+  transition: transform 0.3s ease 0.1s;
+  width: 70%;
+  max-width: 700px;
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 2rem;
+  padding-bottom: 0;
+  margin-top: 1rem;
+}
+    </style>
+    <link rel="stylesheet" href="Assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="Assets/font-awesom/css/all.min.css" />
+    <link rel="preload" href="Assets/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="Assets/style.css"></noscript> <link rel="stylesheet" href="Assets/style.css">
+    
+    <title>Weather Info</title>
+  </head>
+  <body>
+    <main>
+      <section class="hero">
+        <div class="container hero__container">
+          <div class="search_location">
+            <input
+              type="text"
+              class="search__input"
+              placeholder="Find Your Location..."
+            />
+            <input type="submit" value="Find" class="search__button" />
+          </div>
+
+          <div class="weather_widget">
+            <div class="error"><h4></h4></div>
+            <div class="weather_top">
+              <div class="weather_top-first">
+                <div>
+                  <h3 class="city_name">Jeddah</h3>
+                  <p class="weather_condition">Mostly Rainy</p>
+                </div>
+                <div class="weather_top-right">
+                  <img src="./Images/Icons/rain-500.png" alt="" class="weather_icon">
+                </div>
+              </div>
+
+              <div class="weather_top-second">
+                <div>
+                  <p class="day">Now</p>
+                  <strong class="temp">10<span>&#176</span><span class="temp_format"></span> <small class="real_feel">RealFeel 28<span>&#176</span></small></strong>
+                </div>
+                <div>
+                  <p class="time">Sunrise <span class="time_number">06:45 AM</span> | Sunset <span class="time_number">6:00 PM</span></p>
+                  <div class="date">
+                   
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="weather_bottom">
+              <div class="weather_bottom-left">
+                
+                <div class="info">
+                  <p class="weather_name">Hi  / Lo</p>
+                  <p class="weather_info wind_gusts">10<span>&#176</span>C / 5<span>&#176</span>C</p>
+                </div>
+                <div class="info">
+                  <p class="weather_name">Wind</p>
+                  <p class="weather_info wind">17 km/h</p>
+                </div>
+                <div class="info">
+                  <p class="weather_name">Humidity</p>
+                  <p class="weather_info humidity">73%</p>
+                </div>
+              </div>
+              <div class="weather_bottom-right">
+                <div class="info">
+                  <p class="weather_name">Pressure</p>
+                  <p class="weather_info pressure">1015 mb</p>
+                </div>
+                <div class="info">
+                  <p class="weather_name ">Cloud Cover</p>
+                  <p class="weather_info cloud">0%</p>
+                </div>
+                <div class="info">
+                  <p class="weather_name ">Visibility</p>
+                  <p class="weather_info visibility">73 km</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script>
+      const API_KEY = "2c9faa246f26593357441d74d051bdca"
+
+const cityName = document.querySelector(".city_name")
+const countryName = document.querySelector(".country")
+const condition = document.querySelector(".weather_condition")
+const weatherIcon = document.querySelector(".weather_icon")
+const temperature = document.querySelector(".temp")
+const realFeel = document.querySelector(".real_feel")
+const windEl = document.querySelector(".wind")
+const windGustsEl = document.querySelector(".wind_gusts")
+const humidityEl = document.querySelector(".humidity")
+const pressureEl = document.querySelector(".pressure")
+const cloudEl = document.querySelector(".cloud")
+const visibilityEl = document.querySelector(".visibility")
+const weatherWidget = document.querySelector(".weather_widget")
+
+const time = document.querySelector(".time")
+const date = document.querySelector(".date")
+
+const search_button = document.querySelector(".search__button")
+const search_input = document.querySelector(".search__input")
+
+const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+]
+const week = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+]
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer" async></script>
+    <script src="script.js" async></script>
+   
+  </body>
+</html>

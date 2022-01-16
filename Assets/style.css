@@ -1,0 +1,118 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+.search__button:hover,
+.search__button:focus {
+  background-color: #195daa;
+}
+
+.weather_top-first {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 2.5rem;
+}
+
+.city_name {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.weather_condition {
+  opacity: 0.8;
+  font-size: 1.2rem;
+}
+
+.weather_icon {
+  width: 70px;
+}
+
+.weather_top-second {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 3rem;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.day {
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+.temp {
+  font-weight: 800;
+  font-size: 3rem;
+  cursor: pointer;
+}
+
+.temp:hover {
+  color: var(--primary-color);
+}
+
+.real_feel {
+  font-size: 1.3rem;
+  margin-left: 1rem;
+}
+
+.time {
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  color: white;
+}
+
+.time_number {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.date {
+  font-size: 1.6rem;
+  opacity: 0.9;
+}
+
+.weather_bottom {
+  border-top: 1px solid white;
+  padding-top: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.weather_bottom-right {
+  text-align: right;
+}
+
+.info {
+  margin-bottom: 2rem;
+}
+
+.weather_name {
+  font-size: 1.2rem;
+}
+
+.weather_info {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+@media only screen and (max-width: 768px) {
+  .search_location {
+    width: 100%;
+    min-width: 270px;
+  }
+  .weather_widget {
+    width: 100%;
+  }
+}
+/*# sourceMappingURL=style.css.map */
